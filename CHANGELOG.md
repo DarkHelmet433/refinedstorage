@@ -4,6 +4,7 @@
 - Fixed craftingmonitor sending too many updates on large crafting tasks (Darkere)
 - Added new recipes appearing in opened Grids
 - Fixed recipes with more than 1 bucket of fluid not transferring from JEI
+- Added new recipes appearing in opened Grids
 
 ### 1.6.14
 - Fixed server crash (raoulvdberge)
