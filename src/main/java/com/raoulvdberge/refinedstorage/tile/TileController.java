@@ -67,6 +67,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.function.Predicate;
 
 import static com.raoulvdberge.refinedstorage.capability.CapabilityNetworkNodeProxy.NETWORK_NODE_PROXY_CAPABILITY;
@@ -361,7 +362,9 @@ public class TileController extends TileBase implements ITickable, INetwork, IRe
 
         ItemStack newStack = null;
 
-        for (IStorage<ItemStack> storage : this.itemStorage.getStorages()) {
+        ListIterator storageIter = this.itemStorage.getStorages().listIterator(this.itemStorage.getStorages().size());
+        while (storageIter.hasPrevious()) {
+	    IStorage<ItemStack> storage = (IStorage<ItemStack>)storageIter.previous();
             ItemStack took = null;
 
             if (filter.test(storage) && storage.getAccessType() != AccessType.INSERT) {
@@ -459,7 +462,9 @@ public class TileController extends TileBase implements ITickable, INetwork, IRe
 
         FluidStack newStack = null;
 
-        for (IStorage<FluidStack> storage : this.fluidStorage.getStorages()) {
+        ListIterator storageIter = this.fluidStorage.getStorages().listIterator(this.fluidStorage.getStorages().size());
+        while (storageIter.hasPrevious()) {
+	    IStorage<FluidStack> storage = (IStorage<FluidStack>)storageIter.previous();
             FluidStack took = null;
 
             if (filter.test(storage) && storage.getAccessType() != AccessType.INSERT) {
